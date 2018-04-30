@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_30_102901) do
+ActiveRecord::Schema.define(version: 2018_04_30_113713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2018_04_30_102901) do
     t.integer "scope"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "boards_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "board_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_boards_users_on_board_id"
+    t.index ["user_id"], name: "index_boards_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +49,6 @@ ActiveRecord::Schema.define(version: 2018_04_30_102901) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boards_users", "boards"
+  add_foreign_key "boards_users", "users"
 end
