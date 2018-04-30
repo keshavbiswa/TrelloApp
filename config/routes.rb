@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :boards
+  resources :boards do
+    resources :lists``
+  end
+  
   devise_for :users
   root 'home#index'
   get 'contact', to: 'home#contact'

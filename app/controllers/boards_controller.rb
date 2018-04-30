@@ -5,6 +5,7 @@ class BoardsController < ApplicationController
     # GET /boards/1
     # GET /boards/1.json
     def show
+      @lists = @board.lists
     end
   
     # GET /boards/new
@@ -20,9 +21,10 @@ class BoardsController < ApplicationController
     # POST /boards.json
     def create
       @board = Board.new(board_params)
-  
+      
       respond_to do |format|
         if @board.save
+          current_user.boards << @board
           format.html { redirect_to @board, notice: 'board was successfully created.' }
           format.json { render :show, status: :created, location: @board }
         else

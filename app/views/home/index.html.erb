@@ -5,4 +5,6 @@
 
 <%= link_to "Create a new Board", new_board_path %>
 
-<%= @boards.inspect %>
+<% @boards.each do |b| %>
+    <h2><%= link_to "#{b.name}", board_path(b) %></h2>
+<% end %>

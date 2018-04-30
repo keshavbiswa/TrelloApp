@@ -1,4 +1,11 @@
 <div>
     <h1><%= @board.name %></h1>
     <h2><%= @board.scope %></h2>
+    <% @lists.each do |list| %>
+        <div>
+            <h3><%= list.name%></h3>
+        </div>
+    <% end %>
+
+    <%= link_to "Create a new Lists", new_board_list_path(@board) %>    
 </div>
