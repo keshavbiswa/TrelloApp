@@ -5,10 +5,6 @@ body {
   overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 
-body {
-  padding-top: 0;
-}
-
 @media (max-width: 991.98px) {
   .offcanvas-collapse {
     position: fixed;
@@ -31,7 +27,7 @@ body {
   }
 }
 .navbar {
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 .nav-scroller {
   position: relative;
@@ -76,7 +72,7 @@ body {
 
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .08); }
 
 .lh-100 { line-height: 1; }
 .lh-125 { line-height: 1.25; }
@@ -150,4 +146,58 @@ body {
   padding-bottom: calc(var(--input-padding-y) / 3);
   font-size: 12px;
   color: #777;
+}
+/* login and logout styles */
+
+/* Album styles */
+
+:root {
+  --jumbotron-padding-y: 3rem;
+}
+
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+/* album styles */
+
+/*
+* Custom Styles 
+*/
+
+
+.card-body ul{
+  background-color: #ccffcc;
 }

@@ -13,8 +13,11 @@
   <body bg-light>
     <%= render 'shared/nav'%>
     <%= render 'shared/notice'%>
+    <%= render 'shared/jumbotron' %>
+
     <main role="main" class="container">
       <%= yield %>
     </main>
+    <%= render 'shared/footer'%>
   </body>
 </html>

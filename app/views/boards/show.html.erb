@@ -6,7 +6,6 @@
     </div>
 </div>
 <%= render 'list'%>
-    
-<div id = "list new">
-    <%= link_to "Create a new Lists", new_board_list_path(@board) %>    
-</div>
+<br/>
+<%= link_to "Create a new Lists", new_board_list_path(@board), class: 'btn btn-link' %>
+
