@@ -6,6 +6,9 @@ class BoardsController < ApplicationController
     # GET /boards/1.json
     def show
       @lists = @board.lists
+      @lists.each do |list|
+        @cards = list.cards
+      end
     end
   
     # GET /boards/new

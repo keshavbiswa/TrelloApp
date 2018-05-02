@@ -4,6 +4,11 @@
     <% @lists.each do |list| %>
         <div>
             <h3><%= list.name%></h3>
+            <% list.cards.each do |card| %>
+                <h4><%= card.name %></h4>
+                <%= link_to "Delete", board_list_card_path(@board, list, card), method: :delete, data: { confirm: 'Are you sure?'} %>
+            <% end %>
+            <%= link_to "Create a new card", new_board_list_card_path(@board, list) %>
         </div>
     <% end %>
     <div id = "list new">
