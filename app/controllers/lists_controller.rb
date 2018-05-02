@@ -9,7 +9,7 @@ class ListsController < ApplicationController
         @list.board = board
         respond_to do |format|
             if @list.save
-            format.html { redirect_to root_path, notice: 'List was successfully created.' }
+            format.html { redirect_to board_path(board), notice: 'List was successfully created.' }
             format.json { render :show, status: :created, location: @List }
             else
             format.html { render :new }

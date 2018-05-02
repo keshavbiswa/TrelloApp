@@ -6,6 +6,7 @@
             <h3><%= list.name%></h3>
         </div>
     <% end %>
-
-    <%= link_to "Create a new Lists", new_board_list_path(@board) %>    
+    <div id = "list new">
+        <%= link_to "Create a new Lists", new_board_list_path(@board) %>    
+    </div>
 </div>
