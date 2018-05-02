@@ -3,7 +3,7 @@
       <div class="card mb-4 box-shadow">
           <div class="card-body">
               <h5 class="card-title"><%= link_to "#{b.name}", board_path(b) %></h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><%= b.body %></p>
               <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                       <%= link_to "View", board_path(b), class: "btn btn-sm btn-outline-secondary"%>
