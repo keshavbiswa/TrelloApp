@@ -7,7 +7,7 @@ class BoardsController < ApplicationController
     def show
       @lists = @board.lists
       @lists.each do |list|
-        @cards = list.cards
+        @cards = list.cards.order("sort ASC")
       end
     end
   
