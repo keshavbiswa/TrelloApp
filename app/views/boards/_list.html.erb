@@ -1,12 +1,12 @@
 <div class="row">
     <% @lists.each do |list| %>
-        <div class="col-md-4">
+        <div class="col-md-4" data-id = "<%= list.id %>">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title"><%= list.name%></h5>
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush sortable">
                         <% list.cards.each do |card| %>
-                            <li class="list-group-item"><%= card.name %> <%= link_to "Delete", board_list_card_path(@board, list, card), method: :delete, data: { confirm: 'Are you sure?'}, class: 'float-right' %></li>
+                            <li class="list-group-item item" data-id= "<%= card.id %>"><%= card.name %> <%= link_to "Delete", board_list_card_path(@board, list, card), method: :delete, data: { confirm: 'Are you sure?'}, class: 'float-right' %></li>
                         <% end %>
                         <li class="list-group-item"><%= link_to "Create a new card", new_board_list_card_path(@board, list) %></li>
                     </ul>

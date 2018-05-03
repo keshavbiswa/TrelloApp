@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :boards do
     resources :lists do
-      resources :cards
+      resources :cards do
+        put :sort, on: :collection
+      end
     end
   end
   
