@@ -68,3 +68,5 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+
+ruby "2.5.0"
