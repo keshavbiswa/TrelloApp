@@ -1,9 +1,7 @@
 class CardsController < ApplicationController
   def sort
-    params[:order].each do |key, value|
-      Card.find(value[:id]).update!(sort: value[:position])
-      puts value
-    end
+    Card.find(params["task"]["id"]).update!(sort: params["task"]["sort"], list_id: params["task"]["list_id"])
+    
     render body: nil
   end
 
