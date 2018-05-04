@@ -9,6 +9,7 @@ class BoardsController < ApplicationController
       @lists.each do |list|
         @cards = list.cards.order("sort ASC")
       end
+      @card = Card.new
     end
   
     # GET /boards/new
