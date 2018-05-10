@@ -9,8 +9,8 @@
   </div>
 
   <div class="form-label-group">
+    <%= f.label :password, class: 'sr-only' %>
     <%= f.password_field :password, autocomplete: "off", class: 'form-control',id: "inputPassword", placeholder: "Password" %>
-    <%= f.label :password %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
