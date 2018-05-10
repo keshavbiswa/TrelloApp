@@ -1,0 +1,8 @@
+<%= form_with(model: card, url: board_list_cards_path(@board, list, card)) do |form| %>
+  <div class="input-group mb-3">
+    <%= form.text_field :name, class: 'form-control', placeholder: "Add a card", aria_label: 'Add a card', aria_describedby: "basic-addon2" %>
+    <div class="input-group-append">
+      <%= form.submit "Add", class: 'btn btn-outline-primary' %>
+    </div>
+  </div>
+<% end %>

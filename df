@@ -1,0 +1,35 @@
+[33mcommit 93bfefd0742e14146fffdc198596bc0d0c127ef6[m
+Author: Keshav <keshavbiswa21@gmail.com>
+Date:   Mon Apr 30 18:17:08 2018 +0530
+
+    Completed boards crud functionality
+
+[33mcommit 43978cd7ac23e5459b9ed6369e259be7ec00cacd[m
+Author: Keshav <keshavbiswa21@gmail.com>
+Date:   Mon Apr 30 17:32:53 2018 +0530
+
+    Implemented many-to-many relationship between users and boards
+
+[33mcommit 98946a58feee2c423dec76ad72f191f533590f1e[m
+Author: Keshav <keshavbiswa21@gmail.com>
+Date:   Mon Apr 30 17:04:37 2018 +0530
+
+    Implemented Boards model
+
+[33mcommit b044895b080034fed218a9df43c54122ea506dc7[m
+Author: Keshav <keshavbiswa21@gmail.com>
+Date:   Mon Apr 30 15:56:57 2018 +0530
+
+    Implemented the user model via devise
+
+[33mcommit abba816eb977352d0fb8934def2521d0473c6eba[m
+Author: Keshav <keshavbiswa21@gmail.com>
+Date:   Mon Apr 30 15:43:33 2018 +0530
+
+    Created Home controller
+
+[33mcommit bc7ff1c59cd706be186cbef775656430c518fba1[m
+Author: Keshav <keshavbiswa21@gmail.com>
+Date:   Mon Apr 30 15:38:57 2018 +0530
+
+    Initial Commit

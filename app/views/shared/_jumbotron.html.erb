@@ -1,0 +1,12 @@
+<% if current_page? root_path%>
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Your Boards</h1>
+      <p class="lead text-muted">A Trello board is a list of lists, filled with cards, used by you and your team. It's a lot more than that, though. Trello has everything you need to organize projects of any size. Open a card and you can add comments, upload file attachments, create checklists, add labels and due dates, and more.</p>
+      <p>
+        <%= link_to 'Create a new Board', new_board_path, class: 'btn btn-primary my-2'%>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-secondary my-2"%>
+      </p>
+    </div>
+  </section>
+<% end %>
