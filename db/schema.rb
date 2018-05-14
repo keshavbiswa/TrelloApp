@@ -42,17 +42,17 @@ ActiveRecord::Schema.define(version: 2018_05_14_091906) do
     t.index ["list_id"], name: "index_cards_on_list_id"
   end
 
-  create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string "slug", null: false
-    t.integer "sluggable_id", null: false
-    t.string "sluggable_type", limit: 50
-    t.string "scope"
-    t.datetime "created_at"
-    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
-  end
+  # create_table "friendly_id_slugs", force: :cascade do |t|
+  #   t.string "slug", null: false
+  #   t.integer "sluggable_id", null: false
+  #   t.string "sluggable_type", limit: 50
+  #   t.string "scope"
+  #   t.datetime "created_at"
+  #   t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  #   t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  #   t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  #   t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  # end
 
   create_table "lists", force: :cascade do |t|
     t.bigint "board_id"
@@ -62,21 +62,21 @@ ActiveRecord::Schema.define(version: 2018_05_14_091906) do
     t.index ["board_id"], name: "index_lists_on_board_id"
   end
 
-  create_table "teams", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  # create_table "teams", force: :cascade do |t|
+  #   t.string "name"
+  #   t.text "description"
+  #   t.datetime "created_at", null: false
+  #   t.datetime "updated_at", null: false
+  # end
 
-  create_table "teams_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_teams_users_on_team_id"
-    t.index ["user_id"], name: "index_teams_users_on_user_id"
-  end
+  # create_table "teams_users", force: :cascade do |t|
+  #   t.bigint "user_id"
+  #   t.bigint "team_id"
+  #   t.datetime "created_at", null: false
+  #   t.datetime "updated_at", null: false
+  #   t.index ["team_id"], name: "index_teams_users_on_team_id"
+  #   t.index ["user_id"], name: "index_teams_users_on_user_id"
+  # end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -100,6 +100,6 @@ ActiveRecord::Schema.define(version: 2018_05_14_091906) do
   add_foreign_key "boards_users", "users"
   add_foreign_key "cards", "lists"
   add_foreign_key "lists", "boards"
-  add_foreign_key "teams_users", "teams"
-  add_foreign_key "teams_users", "users"
+  # add_foreign_key "teams_users", "teams"
+  # add_foreign_key "teams_users", "users"
 end

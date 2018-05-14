@@ -1,0 +1,4 @@
+<%= form_with(model: board, local: true, class: 'form-inline', url: insert_board_path(board)) do |form| %>
+  <%= form.text_field :term, class: 'form-control mr-sm-2', placeholder: 'Enter member\'s username' %>
+  <%= form.submit "Add", class: 'btn btn-outline-secondary my-2 my-sm-0', data: {confirm: 'Are you sure you want to add the member?'} %>
+<% end %>

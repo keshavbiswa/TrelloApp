@@ -5,6 +5,8 @@ Rails.application.routes.draw do
         put :sort, on: :collection
       end
     end
+    get 'add', to: 'boards#add'
+    patch :insert, on: :member
   end
   
   devise_for :users

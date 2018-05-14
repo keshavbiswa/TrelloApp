@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-    before_action :authenticate_user!, :set_board, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, :set_board, only: [:show, :edit, :update, :destroy, :insert]
     # access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit, :toggle_status]}, site_admin: :all
     
     # GET /boards/1
@@ -37,6 +37,23 @@ class BoardsController < ApplicationController
         end
       end
     end
+
+    def insert
+      user = User.where(name: params["board"]["term"]).take
+      respond_to do |format|
+        if user
+          if @board.users.exists?(name: user.name)
+            format.html {redirect_to root_path, notice: 'The user is already a member of the board.'} 
+          else
+            @board.users << user
+            format.html {redirect_to root_path, notice: 'Member was succesfully updated.'}
+          end
+
+        else
+          format.html { redirect_to root_path, notice: 'Member with that name does not exists.' }
+        end
+      end
+    end
   
     # PATCH/PUT /boards/1
     # PATCH/PUT /boards/1.json
@@ -61,6 +78,11 @@ class BoardsController < ApplicationController
         format.json { head :no_content }
       end
     end
+
+    def add
+      @board = Board.find(params[:board_id])
+      @users = User.all
+    end
   
     private
       # Use callbacks to share common setup or constraints between actions.
@@ -70,6 +92,6 @@ class BoardsController < ApplicationController
   
       # Never trust parameters from the scary internet, only allow the white list through.
       def board_params
-        params.require(:board).permit(:name, :scope, :body)
+        params.require(:board).permit(:name, :scope, :body, :author)
       end
 end
