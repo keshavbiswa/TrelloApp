@@ -4,9 +4,12 @@
   <h1 class="h3 mb-3 font-weight-normal">Trello</h1>
   <p>Edit <%= resource_name.to_s.humanize %></p>
 
+  <%= f.label :name, class: 'sr-only' %>
+  <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control', id: "inputName", placeholder: "Username"  %>
+
   <div class="form-label-group">
     <%= f.label :email, class: 'sr-only' %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', id: "inputEmail", placeholder: "Email address"  %>    
+    <%= f.email_field :email, autocomplete: "email", class: 'form-control', id: "inputEmail", placeholder: "Email address"  %>    
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

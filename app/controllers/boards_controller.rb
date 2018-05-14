@@ -25,7 +25,7 @@ class BoardsController < ApplicationController
     # POST /boards.json
     def create
       @board = Board.new(board_params)
-      
+      @board.author = current_user.name
       respond_to do |format|
         if @board.save
           current_user.boards << @board

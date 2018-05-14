@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   
   def index
     @boards = current_user.boards
+    @users = User.all
   end
 
   def contact
