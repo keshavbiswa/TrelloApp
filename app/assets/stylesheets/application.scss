@@ -5,8 +5,7 @@
 @media (min-width: 992px) {
   .container-scroll {
     white-space: nowrap;
-    overflow:hidden;
-    min-height: 100%;
+    overflow:hidden;;
   }
 
   .cols {
@@ -16,10 +15,14 @@
     min-width:22%;
     margin:10px;
     padding:10px;
+    overflow-y: auto;
   }
 
   .container-scroll:hover {
     overflow-x: auto !important;
-    min-height: 100% !important;
+  }
+  .card-body ul {
+    max-height: 30vh;
+    overflow-x: auto;
   }
 }
