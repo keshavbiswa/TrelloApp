@@ -1,19 +1,15 @@
-<div class="row">
-    <% @lists.each do |list| %>
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body ">
-                    <h5 class="card-title"><%= list.name%></h5>
-                    <ul class="list-group list-group-flush sortable" data-id= "<%= list.id %>">
-                        <% list.cards.each do |card| %>
-                            <li class="list-group-item item" data-id="<%= card.id %>" id="card<%= card.id %>" data-position="<%= card.sort %>"><%= card.name %> <%= link_to "Delete", board_list_card_path(@board, list, card), method: :delete, data: { confirm: 'Are you sure?'}, class: 'float-right' %></li>
-                        <% end %>
-                    </ul>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><%= render 'cards/form', card: @card, list: list%></li>
-                    </ul>
-                </div>
-            </div>
+<% @lists.each do |list| %>
+    <div class="card cols" style="width: 18rem;">
+        <div class="card-body ">
+            <h5 class="card-title"><%= list.name%></h5>
+            <ul class="list-group list-group-flush sortable" data-id= "<%= list.id %>">
+                <% list.cards.each do |card| %>
+                    <li class="list-group-item item" data-id="<%= card.id %>" id="card<%= card.id %>" data-position="<%= card.sort %>"><%= card.name %> <%= link_to "Delete", board_list_card_path(@board, list, card), method: :delete, data: { confirm: 'Are you sure?'}, class: 'float-right' %></li>
+                <% end %>
+            </ul>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><%= render 'cards/form', card: @card, list: list%></li>
+            </ul>
         </div>
-    <% end %>
-</div>
+    </div>
+<% end %>

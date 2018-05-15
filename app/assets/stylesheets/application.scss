@@ -1,3 +1,25 @@
 @import "bootstrap";
 @import "jquery-ui";
 @import "custom-styles";
+
+@media (min-width: 992px) {
+  .container-scroll {
+    white-space: nowrap;
+    overflow:hidden;
+    min-height: 100%;
+  }
+
+  .cols {
+    flex:1;
+    -webkit-flex:1;
+    display: inline-table;
+    min-width:22%;
+    margin:10px;
+    padding:10px;
+  }
+
+  .container-scroll:hover {
+    overflow-x: auto !important;
+    min-height: 100% !important;
+  }
+}
