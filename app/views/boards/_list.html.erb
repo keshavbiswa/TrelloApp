@@ -3,8 +3,12 @@
         <div class="card-body ">
             <h5 class="card-title"><%= list.name%></h5>
             <ul class="list-group list-group-flush sortable" data-id= "<%= list.id %>">
-                <% list.cards.each do |card| %>
-                    <li class="list-group-item item" data-id="<%= card.id %>" id="card<%= card.id %>" data-position="<%= card.sort %>"><%= card.name %> <%= link_to "Delete", board_list_card_path(@board, list, card), method: :delete, data: { confirm: 'Are you sure?'}, class: 'float-right' %></li>
+                <%if list.cards.count > 0%>
+                    <% list.cards.each do |card| %>
+                        <li class="list-group-item item" data-id="<%= card.id %>" id="card<%= card.id %>" data-position="<%= card.sort %>"><%= card.name %> <%= link_to "Delete", board_list_card_path(@board, list, card), method: :delete, data: { confirm: 'Are you sure?'}, class: 'float-right' %></li>
+                    <% end %>
+                <% else %>
+                    <li class="list-group-item item"></li>
                 <% end %>
             </ul>
             <ul class="list-group list-group-flush">
