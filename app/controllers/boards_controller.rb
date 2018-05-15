@@ -26,9 +26,15 @@ class BoardsController < ApplicationController
     def create
       @board = Board.new(board_params)
       @board.author = current_user.name
+      user = current_user
       respond_to do |format|
-        if @board.save
-          current_user.boards << @board
+        if user.boards.exists?(name: @board.name)
+          format.html { redirect_to root_path, notice: 'board is already present.' }
+        elsif @board.save
+          user.boards << @board
+          @user = user
+          # Tell the UserMailer to send a welcome email after save
+          UserMailer.with(user: @user, board: @board).new_board_email.deliver
           format.html { redirect_to @board, notice: 'board was successfully created.' }
           format.json { render :show, status: :created, location: @board }
         else
