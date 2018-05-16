@@ -1,0 +1,7 @@
+<h1>Welcome to keshavtrello.com, <%= @user.name %></h1>
+<% user = User.find(@board.author_id) %>
+<p>
+  <%= user.name %> has added you to his board <strong><%= @board.name %></strong>
+  your username is: <%= @user.name %>.<br>
+</p>
+<p>Thanks for joining and have a great day!</p>

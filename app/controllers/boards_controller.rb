@@ -25,7 +25,7 @@ class BoardsController < ApplicationController
     # POST /boards.json
     def create
       @board = Board.new(board_params)
-      @board.author = current_user.name
+      @board.author_id = current_user.id
       user = current_user
       respond_to do |format|
         if user.boards.exists?(name: @board.name)
@@ -52,6 +52,7 @@ class BoardsController < ApplicationController
             format.html {redirect_to root_path, notice: 'The user is already a member of the board.'} 
           else
             @board.users << user
+            MemberMailerWorker.perform_async(user.id, @board.id)
             format.html {redirect_to root_path, notice: 'Member was succesfully updated.'}
           end
 
@@ -78,10 +79,12 @@ class BoardsController < ApplicationController
     # DELETE /boards/1
     # DELETE /boards/1.json
     def destroy
-      @board.destroy
-      respond_to do |format|
-        format.html { redirect_to root_path, notice: 'Board was successfully destroyed.' }
-        format.json { head :no_content }
+      if @board.author_id == current_user.id
+        @board.destroy
+        respond_to do |format|
+          format.html { redirect_to root_path, notice: 'Board was successfully destroyed.' }
+          format.json { head :no_content }
+        end
       end
     end
 

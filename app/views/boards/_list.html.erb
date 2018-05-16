@@ -5,7 +5,12 @@
             <ul class="list-group list-group-flush sortable" data-id= "<%= list.id %>">
                 <%if list.cards.count > 0%>
                     <% list.cards.each do |card| %>
-                        <li class="list-group-item item" data-id="<%= card.id %>" id="card<%= card.id %>" data-position="<%= card.sort %>"><%= card.name %> <%= link_to "Delete", board_list_card_path(@board, list, card), method: :delete, data: { confirm: 'Are you sure?'}, class: 'float-right' %></li>
+                        <li class="list-group-item item" data-id="<%= card.id %>" id="card<%= card.id %>" data-position="<%= card.sort %>">
+                            <%= card.name %>
+                            <%if @board.author_id == current_user.id %>
+                                <%= link_to "Delete", board_list_card_path(@board, list, card), method: :delete, data: { confirm: 'Are you sure?'}, class: 'float-right' %>
+                            <% end %>
+                        </li>
                     <% end %>
                 <% else %>
                     <li class="list-group-item item"></li>
@@ -15,7 +20,7 @@
                 <li class="list-group-item"><%= render 'cards/form', card: @card, list: list%></li>
             </ul>
         </div>
-        <%if @board.author == current_user.name %>
+        <%if @board.author_id == current_user.id %>
             <%= link_to "Delete", board_list_path(@board, list), class: 'float-right',method: :delete, data: { confirm: 'Are you sure you want to delete this list?'}%>
         <% end %>
     </div>

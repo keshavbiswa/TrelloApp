@@ -21,4 +21,10 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: @user.email, subject: "Daily report of keshav-trello.com")
   end
+
+  def new_member_mail
+    @user = params[:user]
+    @board = params[:board]
+    mail(to: @user.email, subject: 'Welcome')
+  end
 end

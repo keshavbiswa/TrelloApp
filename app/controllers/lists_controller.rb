@@ -30,11 +30,14 @@ class ListsController < ApplicationController
     end
 
     def destroy
-        @list = List.find(params[:id])
-        @list.destroy
-        respond_to do |format|
-          format.html { redirect_to board_path(params[:board_id]), notice: 'List was successfully destroyed.' }
-          format.json { head :no_content }
+        board = Board.find(params[:board_id])
+        if board.author_id == current_user.id
+            @list = List.find(params[:id])
+            @list.destroy
+            respond_to do |format|
+            format.html { redirect_to board_path(params[:board_id]), notice: 'List was successfully destroyed.' }
+            format.json { head :no_content }
+            end
         end
     end
 

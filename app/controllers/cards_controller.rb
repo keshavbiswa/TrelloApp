@@ -32,10 +32,13 @@ class CardsController < ApplicationController
 
   def destroy
     @card = Card.find(params[:id])
-    @card.destroy
-    respond_to do |format|
-      format.html { redirect_to board_path(params[:board_id]), notice: 'Card was successfully destroyed.' }
-      format.json { head :no_content }
+    board = Board.find(params[:board_id])
+      if @board.author_id == current_user.id
+      @card.destroy
+      respond_to do |format|
+        format.html { redirect_to board_path(params[:board_id]), notice: 'Card was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
