@@ -12,6 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/.rdb
 
 # Ignore uploaded files in development
 /storage/*
@@ -30,5 +31,3 @@ trello.code-workspace
 
 cron.log
 error.log
-
-dump.rdb

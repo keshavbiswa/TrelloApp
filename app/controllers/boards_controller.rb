@@ -29,13 +29,13 @@ class BoardsController < ApplicationController
       user = current_user
       respond_to do |format|
         if user.boards.exists?(name: @board.name)
-          format.html { redirect_to root_path, notice: 'board is already present.' }
+          format.html { redirect_to root_path, notice: 'Board is already present.' }
         elsif @board.save
           user.boards << @board
           @user = user
           # Tell the UserMailer to send a welcome email after save
           BoardMailerWorker.perform_async(@user.id, @board.id)
-          format.html { redirect_to @board, notice: 'board was successfully created.' }
+          format.html { redirect_to @board, notice: 'Board was successfully created.' }
           format.json { render :show, status: :created, location: @board }
         else
           format.html { render :new }
@@ -66,7 +66,7 @@ class BoardsController < ApplicationController
     def update
       respond_to do |format|
         if @board.update(board_params)
-          format.html { redirect_to @board, notice: 'board was successfully updated.' }
+          format.html { redirect_to @board, notice: 'Board was successfully updated.' }
           format.json { render :show, status: :ok, location: @board }
         else
           format.html { render :edit }
@@ -80,7 +80,7 @@ class BoardsController < ApplicationController
     def destroy
       @board.destroy
       respond_to do |format|
-        format.html { redirect_to boards_url, notice: 'board was successfully destroyed.' }
+        format.html { redirect_to root_path, notice: 'Board was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

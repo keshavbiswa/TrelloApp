@@ -15,5 +15,8 @@
                 <li class="list-group-item"><%= render 'cards/form', card: @card, list: list%></li>
             </ul>
         </div>
+        <%if @board.author == current_user.name %>
+            <%= link_to "Delete", board_list_path(@board, list), class: 'float-right',method: :delete, data: { confirm: 'Are you sure you want to delete this list?'}%>
+        <% end %>
     </div>
 <% end %>
