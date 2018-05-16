@@ -30,3 +30,5 @@ trello.code-workspace
 
 cron.log
 error.log
+
+dump.rdb
