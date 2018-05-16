@@ -34,7 +34,7 @@ class BoardsController < ApplicationController
           user.boards << @board
           @user = user
           # Tell the UserMailer to send a welcome email after save
-          UserMailer.with(user: @user, board: @board).new_board_email.deliver
+          BoardMailerWorker.perform_async(@user.id, @board.id)
           format.html { redirect_to @board, notice: 'board was successfully created.' }
           format.json { render :show, status: :created, location: @board }
         else

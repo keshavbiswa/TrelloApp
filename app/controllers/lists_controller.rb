@@ -7,10 +7,14 @@ class ListsController < ApplicationController
         @list = List.new(list_params)
         board = Board.find(params[:board_id])
         @list.board = board
+        user = current_user
         respond_to do |format|
             if @list.save
-            format.html { redirect_to board_path(board), notice: 'List was successfully created.' }
-            format.json { render :show, status: :created, location: @List }
+                @user = user
+                # Tell the UserMailer to send a welcome email after save
+                ListMailerWorker.perform_async(@user.id, @list.id)
+                format.html { redirect_to board_path(board), notice: 'List was successfully created.' }
+                format.json { render :show, status: :created, location: @List }
             else
             format.html { render :new }
             format.json { render json: @list.errors, status: :unprocessable_entity }

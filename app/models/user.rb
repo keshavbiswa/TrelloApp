@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_and_belongs_to_many  :boards
 
   after_create :welcome_email
+  
   def welcome_email
-    UserMailer.welcome_email(self).deliver
+    UserMailerWorker.perform_async(self.id)
   end
 end

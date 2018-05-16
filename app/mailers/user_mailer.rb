@@ -10,4 +10,10 @@ class UserMailer < ApplicationMailer
     @board = params[:board]
     mail(to: @user.email, subject: 'Created a new board')
   end
+
+  def new_list_email
+    @user = params[:user]
+    @list = params[:list]
+    mail(to: @user.email, subject: 'Created a new list')
+  end
 end
