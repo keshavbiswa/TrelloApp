@@ -21,7 +21,8 @@
       </tr>
     <% else %>
       <tr>
-        <td>No changes were made today</td>
+        <td><%= b.id %></td>
+        <td>No new boards where created today </td>
       </tr>
     <% end %>
   <% end %>
@@ -43,6 +44,7 @@
       </tr>
     <% else %>
       <tr>
+        <td><%= b.id %></td>
         <td>No changes were made today</td>
       </tr>
     <% end %>
