@@ -27,3 +27,6 @@
 trello.code-workspace
 
 /config/local_env.yml
+
+cron.log
+error.log

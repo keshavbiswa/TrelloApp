@@ -75,4 +75,6 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 
 gem 'sidekiq', '~> 4.1', '>= 4.1.2'
 
+gem 'whenever', require: false
+
 ruby "2.5.0"

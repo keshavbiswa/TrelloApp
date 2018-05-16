@@ -16,4 +16,9 @@ class UserMailer < ApplicationMailer
     @list = params[:list]
     mail(to: @user.email, subject: 'Created a new list')
   end
+
+  def daily_mail(user)
+    @user = user
+    mail(to: @user.email, subject: "Daily report of keshav-trello.com")
+  end
 end

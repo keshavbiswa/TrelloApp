@@ -1,0 +1,51 @@
+<h1>Welcome to keshavtrello.com</h1>
+<p>
+  your username is: <%= @user.name %>.<br>
+</p>
+<p>Thanks for joining and have a great day!</p>
+
+<p>New changes</p>
+
+<% new_boards = Board.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)%>
+<h2> New boards </h2>
+<table>
+  <tr>
+    <th>Board id</th>
+    <th>Name</th>
+  </tr>
+  <% new_boards.each do |b| %>
+    <% if b.users.exists?(@user.id) %>
+      <tr>
+          <td><%=b.id %></td>
+          <td><%=b.name%></td>
+      </tr>
+    <% else %>
+      <tr>
+        <td>No changes were made today</td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<h2>Updated boards</h2>
+<%updated_boards = Board.where(updated_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)%>
+
+<table>
+  <tr>
+    <th>Board id</th>
+    <th>Name</th>
+  </tr>
+  <% updated_boards.each do |b| %>
+    <% if b.users.exists?(@user.id) %>
+      <tr>
+          <td><%=b.id %></td>
+          <td><%=b.name%></td>
+      </tr>
+    <% else %>
+      <tr>
+        <td>No changes were made today</td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
