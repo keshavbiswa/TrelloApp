@@ -6,5 +6,4 @@ class BoardMailerWorker
     board = Board.find(board_id)
     UserMailer.with(user: user, board: board).new_board_email.deliver
   end
-  
 end

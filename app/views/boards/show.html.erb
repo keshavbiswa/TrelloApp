@@ -7,7 +7,5 @@
 </div>
 <div id="content-body" class="container-scroll">
     <%= render 'list'%>
-
-    <%= link_to "Create a new Lists", new_board_list_path(@board), class: 'btn btn-link' %>
+    <%= link_to "Create a new Lists", new_board_list_path(@board), class: 'btn btn-link', remote: true, id: 'new-list' %>
 </div>
-

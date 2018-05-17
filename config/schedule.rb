@@ -23,5 +23,3 @@
 every 1.day, at: '7:30 pm' do
   runner "User.daily_update", environment: 'development', output: 'log/cron.log'
 end
-
-
