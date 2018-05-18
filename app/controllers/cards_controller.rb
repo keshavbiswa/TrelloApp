@@ -1,7 +1,14 @@
 class CardsController < ApplicationController
+
   def sort
-    Card.find(params["task"]["id"]).update!(sort: params["task"]["sort"], list_id: params["task"]["list_id"])
-    
+    Card.find(params["task"]["id"]).update!(list_id: params["task"]["list_id"])
+    list = List.find(params["task"]["list_id"])
+    sorted_cards = list.cards
+    params["task"]["sort_id"].each_with_index do |v, i|
+      c = list.cards.find(v)
+      c.update!(sort: params["task"]["sort"][i])
+    end
+
     render body: nil
   end
 
@@ -13,6 +20,9 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
     list = List.find(params[:list_id])
     @card.list = list
+    if list.cards.count > 0
+      @card.sort = list.cards.last.sort + 1
+    end
     respond_to do |format|
       if @card.save
         format.html { redirect_to board_path(params[:board_id]), notice: 'Card was successfully created.' }
@@ -33,7 +43,7 @@ class CardsController < ApplicationController
   def destroy
     @card = Card.find(params[:id])
     board = Board.find(params[:board_id])
-      if @board.author_id == current_user.id
+      if board.author_id == current_user.id
       @card.destroy
       respond_to do |format|
         format.html { redirect_to board_path(params[:board_id]), notice: 'Card was successfully destroyed.' }

@@ -3,13 +3,14 @@ $( function(){
     connectWith: ".sortable",
     stop: updatePosition
   });
-
+  var updatedOrder = []
   function updatePosition(event, ui){
     var updateData = {
       task: {
         id: ui.item.data().id,
         list_id: ui.item.parent().data().id,
-        sort: new_position(ui.item)
+        sort: new_position(ui.item),
+        sort_id: find_id(ui.item)
       }}
     console.log(updateData)
     $.ajax({
@@ -20,20 +21,29 @@ $( function(){
   }
 
   function new_position($item){
-    var pre = 0;
-    var succ = 0;
-    var current_pos = parseFloat($item.data().position);
+    
+    updatedOrder =[];
+    var current_pos = $item.index();
 
-    if($item.prev().length){
-      pre=parseFloat($item.prev().data().position);
-    }
-    if($item.next().length){
-      succ=parseFloat($item.next().data().position);
-    }
+    $item.prevAll().each(function (i){
+    	updatedOrder.push(i); 
+    });
+    updatedOrder.push(current_pos);
+    $item.nextAll().each(function (i){
+      i = updatedOrder.length;
+      updatedOrder.push(i); 
+    });
+    return updatedOrder;
+  }
 
-    if(pre+succ === 0) return current_pos;
-    if(pre === 0) return succ/2;
-    if(succ === 0) return (pre + 1.0);
-    return (parseFloat(pre) + parseFloat(succ))/2;
+  function find_id($item){
+
+    updatedOrder = [];
+    var current_id = $item.data().id;
+    var list = $item.parent();
+    list.children().each(function(i,v){
+      updatedOrder.push($(this).data().id);
+    });
+    return updatedOrder;
   }
 });
