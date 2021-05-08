@@ -25,7 +25,6 @@ class BoardsController < ApplicationController
     # POST /boards.json
     def create
       @board = Board.new(board_params)
-      @board.author_id = current_user.id
       user = current_user
       respond_to do |format|
         if user.boards.exists?(name: @board.name)
